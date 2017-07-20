@@ -1,0 +1,1 @@
+#Minimum Size Cross-Platform Appium Test Framework
