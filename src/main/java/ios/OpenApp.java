@@ -25,11 +25,4 @@ public class OpenApp {
 		proc.waitFor();
 		return new CimaPage(driver);
 	}
-
-	// @Test
-	public void testRead() {
-		String x = Common.readFile("src/main/resources/ios-allow-script.txt");
-		LOGGER.debug(x);
-	}
-
 }

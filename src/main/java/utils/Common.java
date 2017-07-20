@@ -33,7 +33,7 @@ public class Common {
 	 * @return String: file contents as a string
 	 */
 	public static String readFile(String path){
-		String content = "b";
+		String content = "";
 		
 		try {
 			content = new String(Files.readAllBytes(Paths.get(path)));

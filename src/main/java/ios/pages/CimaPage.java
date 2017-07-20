@@ -1,20 +1,23 @@
 package ios.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import ios.Driver;
 import utils.MobilePage;
 
-public class CimaPage implements MobilePage {
+public class CimaPage extends MobilePage {
 	private IOSDriver<MobileElement> driver;
 
-	public CimaPage() {
-	}
-
+    public CimaPage(){
+    	
+    }
 	public CimaPage(Driver driver) {
 		this.driver = driver.driver;
 		PageFactory.initElements(this.driver, this);
@@ -29,12 +32,12 @@ public class CimaPage implements MobilePage {
 	@FindBy(name = "Sign In")
 	public WebElement signinButton;
 
-	public void inputData(WebElement we, String data) {
-		we.sendKeys(data);
+	public PushConfirmPage LandToPushConfirmPage() {
+		PushConfirmPage push = new PushConfirmPage();
+		signinButton.click();
+		PageFactory.initElements(new AppiumFieldDecorator(driver, 10 , TimeUnit.SECONDS), push);
+		return push;
 	}
-
-	public void clickThings(WebElement we) {
-		we.click();
-	}
+	
 
 }
