@@ -1,7 +1,9 @@
-package ios;
+package android;
+
+
 
 import java.io.IOException;
-import ios.pages.CimaPage;
+import android.pages.CimaPage;
 import org.apache.log4j.Logger;
 import utils.Common;
 
@@ -15,14 +17,9 @@ public class OpenApp {
 	private static final Logger LOGGER = Logger.getLogger(OpenApp.class);
 
 	public CimaPage landToCima() throws InterruptedException, IOException {
-		Common.delay(5000);
+		Common.delay(10000);
 
-		String command = Common
-				.readFile("src/main/resources/ios-allow-script.txt");
-		String[] cmd = { "osascript", "-e", command };
-		Process proc = Runtime.getRuntime().exec(cmd);
-
-		proc.waitFor();
+		
 		return new CimaPage(driver);
 	}
 }
