@@ -8,7 +8,9 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class Driver {
+
+
+public class Driver{
 	public IOSDriver<MobileElement> driver;
 
 	public void startUp() {
