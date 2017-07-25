@@ -32,7 +32,7 @@ Your tests goes into **tests**
 
 Desired Capabilities goes into **test/resources**
 
-TestNG startup configuration is at the project root as **testng/xml**
+TestNG startup configuration is at the project root as **testng.xml**
 
 ### Adding New Tests
 Very easy, add a new class in **src/test/java/tests** and write your test code, and add a new test line inside **testng.xml** so **mvn test** will include your new test.
