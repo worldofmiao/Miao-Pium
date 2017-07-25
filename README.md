@@ -25,9 +25,12 @@ npm install -g ios-deploy
 ## Going A Bit Further
 
 ### The Structure
-Common libraries/classes with re-usable methods and the base page object class goes into **utils**
-Android page object classes and driver goes into **android**
-IOS page object classes and driver goes into **ios**
+
+![](structure.png)
+
+* Common libraries/classes with re-usable methods and the base page object class goes into **utils**
+* Android page object classes and driver goes into **android**
+* IOS page object classes and driver goes into **ios**
 
 Your tests goes into **tests**
 
