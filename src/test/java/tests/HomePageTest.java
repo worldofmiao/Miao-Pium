@@ -3,10 +3,10 @@ package tests;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import utils.Common;
@@ -26,8 +26,9 @@ public class HomePageTest {
 	private static final Logger LOGGER = Logger.getLogger(HomePageTest.class);
 
 	@BeforeTest
-	public void Setup() {
-		this.driver.startUp();
+	@Parameters({ "capconfig" })
+	public void Setup(String capconfig) {
+		this.driver.startUp(capconfig);
 		this.openapp = new OpenApp(this.driver);
 		CimaPage cima = null;
 		try {
@@ -65,7 +66,7 @@ public class HomePageTest {
 		Assert.assertTrue(auto.addRuleButton.isDisplayed());
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void ShutDown() {
 		this.driver.shutDown();
 	}

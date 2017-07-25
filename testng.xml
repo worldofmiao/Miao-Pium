@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="XfinityHomeRuleIntegration">
-	<test name="IOSTest">
+	<test name="IOSTest1">
+		<parameter name="capconfig" value="ios-capability-sets/ios-1.caps"></parameter>
+		<classes>
+			<class name="tests.HomePageTest" />
+		</classes>
+	</test>
+
+	<test name="IOSTest2">
+		<parameter name="capconfig" value="ios-capability-sets/ios-2.caps"></parameter>
 		<classes>
 			<class name="tests.HomePageTest" />
 		</classes>
 	</test>
 
 	<test name="AndroidTest">
+		<parameter name="capconfig" value="android-capability-sets/android-1.caps"></parameter>
 		<classes>
 			<class name="tests.HomePageTestAndroid" />
 		</classes>
 	</test>
-	<!-- Test -->
+
 </suite> <!-- Suite -->

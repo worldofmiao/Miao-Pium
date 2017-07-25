@@ -1,0 +1,6 @@
+platformName=Android
+platformVersion=7.1
+deviceName=My Emulator
+appPackage=com.comcast.xfinityhome.tps
+appActivity=com.comcast.xfinityhome.view.activity.StartupActivity
+app=/Users/mxiang001c/Downloads/xfinityhome-tps-release-8.16.5.816006.apk

@@ -1,6 +1,7 @@
 package ios;
 
 import java.net.URL;
+import java.util.Properties;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSDriver;
@@ -8,21 +9,30 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import utils.Common;
 
-
-public class Driver{
+public class Driver {
 	public IOSDriver<MobileElement> driver;
 
-	public void startUp() {
+	public void startUp(String capconfig) {
 		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setCapability(MobileCapabilityType.BROWSER_NAME, "");
-		// cap.setCapability(MobileCapabilityType.APPIUM_VERSION, "1.6.0");
-		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.2");
-		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 6");
-		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-		cap.setCapability(MobileCapabilityType.APP,
-				"/Users/mxiang001c/Documents/XfinityHome.app");
+
+		System.out.println(capconfig);
+		Common common = new Common();
+		Properties prop = common.loadProperty(capconfig);
+
+		String platformName = prop.getProperty("platformName");
+		String platformVersion = prop.getProperty("platformVersion");
+		String deviceName = prop.getProperty("deviceName");
+		String automationName = prop.getProperty("automationName");
+		String app = prop.getProperty("app");
+
+		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+				platformVersion);
+		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
+		cap.setCapability(MobileCapabilityType.APP, app);
 		cap.setCapability(MobileCapabilityType.FULL_RESET, "true");
 
 		try {
