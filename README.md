@@ -8,6 +8,7 @@
 
 ## How Do I Start
 * Clone it
+* Have your .app built locally and .apk ready.
 * Have Java 1.8 and mvn installed.
 * Have Xcode installed and appium server started at 0.0.0.0:4723 and some other pre-requisite ready such as 
 ```
