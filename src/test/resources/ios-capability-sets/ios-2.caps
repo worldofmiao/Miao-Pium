@@ -1,0 +1,5 @@
+platformName=iOS
+platformVersion=10.2
+deviceName=iPhone 7
+automationName=XCUITest
+app=/Users/mxiang001c/Documents/XfinityHome.app

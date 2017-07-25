@@ -3,8 +3,10 @@ package utils;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
@@ -42,5 +44,18 @@ public class Common {
 			LOGGER.error(e);
 		}
 		return content;
+	}
+	
+	public Properties loadProperty(String path){
+		Properties prop = new Properties();
+		InputStream input = null;
+	    
+		input = getClass().getClassLoader().getResourceAsStream(path);
+		try {
+			prop.load(input);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return prop;
 	}
 }

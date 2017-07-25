@@ -1,6 +1,7 @@
 package android;
 
 import java.net.URL;
+import java.util.Properties;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -8,22 +9,33 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import utils.Common;
 
 public class Driver {
 	public AndroidDriver<MobileElement> driver;
-    
-	public void startUp() {
-		
+
+	public void startUp(String capconfig) {
+
 		DesiredCapabilities cap = new DesiredCapabilities();
-	
-		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
-		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "My Emulator");
-		cap.setCapability(MobileCapabilityType.APP,
-				"/Users/mxiang001c/Downloads/xfinityhome-tps-release-8.16.5.816006.apk");
-		cap.setCapability("appPackage", "com.comcast.xfinityhome.tps");
-		cap.setCapability("appActivity", "com.comcast.xfinityhome.view.activity.StartupActivity");
-		//cap.setCapability(MobileCapabilityType.FULL_RESET, "true");
+
+		System.out.println(capconfig);
+		Common common = new Common();
+		Properties prop = common.loadProperty(capconfig);
+
+		String platformName = prop.getProperty("platformName");
+		String platformVersion = prop.getProperty("platformVersion");
+		String deviceName = prop.getProperty("deviceName");
+		String appPackage = prop.getProperty("appPackage");
+		String appActivity = prop.getProperty("appActivity");
+		String app = prop.getProperty("app");
+
+		cap.setCapability(MobileCapabilityType.PLATFORM_VERSION,
+				platformVersion);
+		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+		cap.setCapability(MobileCapabilityType.APP, app);
+		cap.setCapability("appPackage", appPackage);
+		cap.setCapability("appActivity", appActivity);
 
 		try {
 			this.driver = new AndroidDriver<MobileElement>(new URL(
@@ -34,9 +46,9 @@ public class Driver {
 		}
 
 	}
-    
+
 	public void shutDown() {
-		
+
 		driver.quit();
 
 	}
